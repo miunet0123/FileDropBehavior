@@ -52,7 +52,8 @@ namespace miunet.Windows.FileDrop
 				return;
 			}
 
-			e.Effects = DragDropEffects.Copy;
+			var fileDropCommand = command as FileDropCommand;
+			e.Effects = fileDropCommand == null ? DragDropEffects.Copy : fileDropCommand.DragDropEffects;
 			e.Handled = true;
 		}
 
